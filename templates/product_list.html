@@ -1,44 +1,69 @@
-{% comment %} {%extends index.html%} {% endcomment %}
-{%load static%}
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="./lightslider/src/css/lightslider.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="{% static "./bootstrap/css/bootstrap.min.css" %}">
+<script src="{% static "./bootstrap/js/bootstrap.min.js" %}"></script>
+<link rel="stylesheet" href="./style.css">
 
-<h1>Product List</h1>
+</head>
+<body>
 
-    {%for product in products%}
-    {%endfor%}
+   
 
-    {%block content%}
-
-    <div class="container ">
-    
-        <div class="row">
-        <div class="card-columns" style="padding: 10px; margin: 20px;">
-            <div class="col-5">
-    
-        
-        {% for product in products%}
-        <div class="col-md-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+       
+          <ul class="navbar-nav">
             
-            <div class="card mb-4">
-            <div class="card" style="width: 18rem; border:5px black solid">
-                <img class="card-img-top" src="{{product.image.url}}" alt="">
-                <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
-                <p class="card-text">{{product.description}}</p>
-                <p class="card-text">Price: ${{ product.price}}</p>
-                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a><br><br>
-                <a href="{% url 'buy_now' product.id %}" class="btn btn-primary">Buy Now</a>
-
-        
+            <li class="nav-item active">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'cart'%}">Cart</a>
+            </li>
+          </ul>
+        </div> 
+ 
+    </nav>
+        {% block content %}
+<h1>Product List</h1>
+<div class="container">
+    <div class="row  justify-content-center">
+        {% for product in products %}
+        <div class="col-md-4 d-flex justify-content-center">
+            <div class="card" style="width: 18rem; border: 5px black solid; margin: 10px;">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Product Image">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a><br><br>
+                    <a href="{% url 'buy_now' product.id %}" class="btn btn-success">Buy Now</a>
                 </div>
             </div>
         </div>
-        </div>
         {% endfor %}
-         
-         
-        {% endblock %} 
-
-
-        
+    </div>
+</div>
+{% endblock %} 
+</body>
+</html>
