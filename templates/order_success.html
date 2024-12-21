@@ -1,0 +1,44 @@
+{% comment %} {%extends index.html%} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+</head>
+<body>
+    <header>
+        <h1>Your Order was Successful!</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Thank you for your purchase, {{ user.first_name }}!</h2>
+            <p>Your order number is: <strong>{{ order.id }}</strong></p>
+            <p>A confirmation email has been sent to: <strong>{{ user.email }}</strong></p>
+
+            <h3>Order Details:</h3>
+            <ul>
+                {% for item in order.items.all %}
+                    <li>
+                        {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <p><strong>Total Amount: ${{ order.total_amount }}</strong></p>
+        </section>
+
+        <section>
+            <h3>Next Steps:</h3>
+            <p>We will notify you once your order is shipped.</p>
+            <p>Return to <a href="{% url 'home' %}">Home</a> or view your <a href="{% url 'order_history' %}">Order History</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} Your Store Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{%extends index.html%}
+
+<h1>{{ product.name }}</h1>
+<img src="{{ product.image.url }}" alt="{{ product.name }}">
+<p>{{ product.description }}</p>
+<p>Price: {{ product.price }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <textarea name="address" placeholder="Your Address" required></textarea>
+    <input type="text" name="phone_number" placeholder="Your Phone Number" required>
+    <button type="submit">Order Now</button>
+</form>
+
+{% comment %} <div>
+{%for i in img%%}
+<h1>{{i.name}}</h1>
+<img src="{{i.image.url}}" width='100px' height='100px' alt=''>
+</div> {% endcomment %}

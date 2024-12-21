@@ -1,0 +1,44 @@
+{% comment %} {%extends index.html%} {% endcomment %}
+{%load static%}
+
+
+
+<h1>Product List</h1>
+
+    {%for product in products%}
+    {%endfor%}
+
+    {%block content%}
+
+    <div class="container ">
+    
+        <div class="row">
+        <div class="card-columns" style="padding: 10px; margin: 20px;">
+            <div class="col-5">
+    
+        
+        {% for product in products%}
+        <div class="col-md-4">
+            
+            <div class="card mb-4">
+            <div class="card" style="width: 18rem; border:5px black solid">
+                <img class="card-img-top" src="{{product.image.url}}" alt="">
+                <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <p class="card-text">Price: ${{ product.price}}</p>
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a><br><br>
+                <a href="{% url 'buy_now' product.id %}" class="btn btn-primary">Buy Now</a>
+
+        
+                </div>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+         
+         
+        {% endblock %} 
+
+
+        

@@ -1,0 +1,27 @@
+ {% comment %} {%extends index.html%}  {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+<body>
+    
+<h1 class="text">{{ product.name }}</h1><br>
+
+<p class="amt">Price: {{ product.price }}</p><br>
+
+<img class="picture" src={{product.image.url}}><br><br>
+
+
+<form method="POST">
+    {% csrf_token %}
+    <button class="btn" type="submit">Pay</button>
+</form>
+</body>
+</html>
+
+

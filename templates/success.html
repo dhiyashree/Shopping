@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+</head>
+<body>
+    <div class="main">
+<div>
+    <img class="gify"  style="width:250px; height:200px;margin-left:680px"src="{% static "images/khgh.gif" %}" alt="">
+    </div>
+</div>
+    <h1 class="pay"  style="justify-content:center;margin-right:40px;display:flex;">Payment Successful</h1>
+<p class="order"  style="justify-content:center;margin-right:40px;display:flex;">Thank you for your payment.We will be in contact with more details shortly.</p>
+<a class="page" style="justify-content:center;margin-right:40px;display:flex;"  href="{% url "product_list" %}"> <button>Home Page</button></a>
+
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<form action="{% url 'initiate_payment' %}" method="POST">
+    {% csrf_token %}
+    <label for="amount">Amount:</label>
+    <input type="text" name="amount" required>
+    {% comment %} <button type="submit">Pay Now</button> {% endcomment %}
+</form>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Gradient</title>
+</head>
+<style>
+#bg{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:250px;
+    }
+
+button{
+        cursor:pointer;
+        font-size:20px;
+        padding:20px 30px;
+        border-radius:20px;
+        Background:linear-gradient;
+        color:white;
+    }
+</style>
+</head>
+<body>
+    <div id="bg">
+        <button></button>
+        
+    </div>
+    
+</body>
+</html>
+
